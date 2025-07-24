@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invoice Generator - Create PDF Invoices with Logo</title>
+  <meta name="description" content="Create professional invoices with custom branding, downloadable as PDF. Simple HTML invoice generator with live preview.">
+  <meta name="keywords" content="Invoice Generator, PDF Invoice, HTML Invoice, Logo Invoice, Create Invoice, Download Invoice">
+  <meta name="author" content="Neal Frazier">
+  <link rel="canonical" href="https://yourdomain.com/invoice.html">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      max-width: 850px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      border-radius: 8px;
+    }
+
+    #printable {
+      width: 8in;
+      padding: 20px;
+      margin: auto;
+      background: white;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      margin-top: 4px;
+      margin-bottom: 10px;
+      padding: 8px;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    table {
+      table-layout: fixed;
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 13px;
+    }
+
+    th {
+      background: #111;
+      color: white;
+    }
+
+    .flex {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: #222;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      border-radius: 4px;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      background: #444;
+    }
+
+    .logo-preview {
+      max-height: 80px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 40px;
+      color: #666;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <header style="text-align: center;">
+      <h1 contenteditable="true">INVOICE</h1>
+      <img id="logoPreview" class="logo-preview" alt="Logo Preview"/>
+    </header>
+
+    <section id="printable">
+      <div class="flex">
+        <div>
+          <h3>From</h3>
+          <textarea rows="4" placeholder="Your Company Name&#10;1234 Address Rd&#10;City, ST 00000&#10;(123) 456-7890"></textarea>
+        </div>
+        <div>
+          <h3>To</h3>
+          <textarea rows="4" placeholder="Client Name&#10;Company or Address&#10;City, ST Zip&#10;Email or Phone"></textarea>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody id="invoiceItems">
+          <tr>
+            <td contenteditable="true">Web Design</td>
+            <td contenteditable="true">1</td>
+            <td contenteditable="true">1000</td>
+            <td class="total-cell">$1000</td>
+            <td><button onclick="removeRow(this)">✖</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn" onclick="addRow()">+ Add Item</button>
+
+      <div class="text-right" style="margin-top: 20px;">
+        <h3>Total: $<span id="grandTotal">1000</span></h3>
+      </div>
+    </section>
+
+    <section>
+      <input type="file" id="logoInput" accept="image/*" aria-label="Upload Logo" />
+      <button class="btn" onclick="downloadPDF()">📄 Download PDF</button>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Invoice Generator by Neal Frazier. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script>
+    const invoiceItems = document.getElementById('invoiceItems');
+    const logoInput = document.getElementById('logoInput');
+    const logoPreview = document.getElementById('logoPreview');
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    function updateTotals() {
+      const rows = invoiceItems.querySelectorAll('tr');
+      let grand = 0;
+      rows.forEach(row => {
+        const qty = parseFloat(row.children[1].innerText) || 0;
+        const price = parseFloat(row.children[2].innerText) || 0;
+        const total = qty * price;
+        row.children[3].innerText = '$' + total.toFixed(2);
+        grand += total;
+      });
+      document.getElementById('grandTotal').innerText = grand.toFixed(2);
+    }
+
+    function addRow() {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td contenteditable="true">New Item</td>
+        <td contenteditable="true">1</td>
+        <td contenteditable="true">0</td>
+        <td class="total-cell">$0.00</td>
+        <td><button onclick="removeRow(this)">✖</button></td>
+      `;
+      invoiceItems.appendChild(tr);
+    }
+
+    function removeRow(btn) {
+      btn.closest('tr').remove();
+      updateTotals();
+    }
+
+    document.addEventListener('input', updateTotals);
+
+    logoInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          logoPreview.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function downloadPDF() {
+      const clone = document.getElementById('printable').cloneNode(true);
+      const tempContainer = document.createElement('div');
+      const logoClone = logoPreview.cloneNode(true);
+      logoClone.style.marginBottom = '10px';
+      tempContainer.appendChild(logoClone);
+      tempContainer.appendChild(clone);
+
+      const opt = {
+        margin: 0,
+        filename: 'invoice.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          scrollY: 0
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'letter',
+          orientation: 'portrait'
+        }
+      };
+
+      html2pdf().from(tempContainer).set(opt).save();
+    }
+
+    updateTotals();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Optional editor junk
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Netlify or CI/CD
+.netlify/
+
+# Node (if you later test with local dev server)
+node_modules/
