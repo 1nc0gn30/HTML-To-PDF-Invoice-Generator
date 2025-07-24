@@ -10,11 +10,19 @@
   <link rel="canonical" href="https://invoice-generator-html-to-pdf.netlify.app">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
   <style>
+    :root {
+      --bg: #f5f5f5;
+      --text: #222;
+      --primary: #111;
+      --accent: #00e5ff;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #f5f5f5;
+      background: var(--bg);
       margin: 0;
       padding: 20px;
+      color: var(--text);
     }
 
     .container {
@@ -27,7 +35,7 @@
     }
 
     #printable {
-      width: 8in;
+      width: 100%;
       padding: 20px;
       margin: auto;
       background: white;
@@ -39,18 +47,19 @@
 
     textarea {
       width: 100%;
-      margin-top: 4px;
-      margin-bottom: 10px;
       padding: 8px;
       font-size: 14px;
       resize: vertical;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
 
     table {
-      table-layout: fixed;
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
+      overflow-x: auto;
+      display: block;
     }
 
     th, td {
@@ -63,7 +72,7 @@
     }
 
     th {
-      background: #111;
+      background: var(--primary);
       color: white;
     }
 
@@ -74,14 +83,15 @@
     }
 
     .btn {
-      background: #222;
+      background: var(--primary);
       color: white;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border: none;
       cursor: pointer;
       font-size: 15px;
       border-radius: 4px;
       margin-top: 15px;
+      width: 100%;
     }
 
     .btn:hover {
@@ -92,6 +102,7 @@
       max-height: 80px;
       margin: 10px auto;
       display: block;
+      max-width: 100%;
     }
 
     .text-right {
@@ -108,6 +119,34 @@
     input[type="file"] {
       margin-top: 10px;
     }
+
+    @media (min-width: 600px) {
+      .btn {
+        width: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .flex {
+        flex-direction: column;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        white-space: nowrap;
+      }
+
+      textarea {
+        font-size: 13px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -120,11 +159,11 @@
 
     <section id="printable">
       <div class="flex">
-        <div>
+        <div style="flex: 1;">
           <h3>From</h3>
           <textarea rows="4" placeholder="Your Company Name&#10;1234 Address Rd&#10;City, ST 00000&#10;(123) 456-7890"></textarea>
         </div>
-        <div>
+        <div style="flex: 1;">
           <h3>To</h3>
           <textarea rows="4" placeholder="Client Name&#10;Company or Address&#10;City, ST Zip&#10;Email or Phone"></textarea>
         </div>
@@ -248,4 +287,3 @@
   </script>
 </body>
 </html>
-
