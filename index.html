@@ -52,6 +52,7 @@
       resize: vertical;
       border-radius: 4px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
     }
 
     table {
@@ -76,10 +77,17 @@
       color: white;
     }
 
-    .flex {
+    .contact-blocks {
       display: flex;
       gap: 20px;
+      justify-content: space-between;
       flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .contact {
+      flex: 1 1 320px;
+      max-width: 400px;
     }
 
     .btn {
@@ -127,10 +135,6 @@
     }
 
     @media (max-width: 768px) {
-      .flex {
-        flex-direction: column;
-      }
-
       table {
         font-size: 12px;
       }
@@ -158,12 +162,12 @@
     </header>
 
     <section id="printable">
-      <div class="flex">
-        <div style="flex: 1;">
+      <div class="contact-blocks">
+        <div class="contact">
           <h3>From</h3>
           <textarea rows="4" placeholder="Your Company Name&#10;1234 Address Rd&#10;City, ST 00000&#10;(123) 456-7890"></textarea>
         </div>
-        <div style="flex: 1;">
+        <div class="contact">
           <h3>To</h3>
           <textarea rows="4" placeholder="Client Name&#10;Company or Address&#10;City, ST Zip&#10;Email or Phone"></textarea>
         </div>
