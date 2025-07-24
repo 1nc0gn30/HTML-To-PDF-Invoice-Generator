@@ -1,0 +1,16 @@
+[build]
+  publish = "."       # Serve from root directory
+  command = ""        # No build command needed
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+[context.production.environment]
+  NODE_VERSION = "18"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

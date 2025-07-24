@@ -2,7 +2,7 @@
 
 Create beautiful, branded invoices directly in your browser and export them as PDFs — no frameworks, no backend, no dependencies beyond a single script.
 
-**Live Demo →** [https://your-netlify-site.netlify.app](https://your-netlify-site.netlify.app)
+**Live Demo →** [https://invoice-generator-html-to-pdf.netlify.app](https://invoice-generator-html-to-pdf.netlify.app)
 
 ---
 
