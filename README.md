@@ -1,3 +1,30 @@
+# HTML-To-PDF-Invoice-Generator
+
+A project by Neal Frazier
+
+## Overview
+This repository is part of Neal Frazier project collection.
+
+## Tech Stack
+- Netlify (deployed)
+
+## Project Structure
+```
+HTML-To-PDF-Invoice-Generator/
+  - 
+  (5 files total)
+```
+
+## Getting Started
+
+### Usage
+Open index.html in your browser or serve locally.
+Use: npx serve .
+
+## Original README
+<details>
+<summary>Click to expand original README</summary>
+
 # 🧾 Invoice Generator (HTML + PDF Export)
 
 Create beautiful, branded invoices directly in your browser and export them as PDFs — no frameworks, no backend, no dependencies beyond a single script.
@@ -93,3 +120,26 @@ Twitter: [@inc0gn30](https://twitter.com/inc0gn30)
 MIT — free for personal and commercial use.
 
 > Drop a star ⭐ if you find this useful or fork to customize it for your team or business!
+
+</details>
+
+## TODO / Roadmap
+- [ ] Add unit tests
+- [ ] Add LICENSE file
+- [ ] Add CI/CD pipeline
+- [ ] Add contribution guidelines (CONTRIBUTING.md)
+- [ ] Improve error handling and edge cases
+- [ ] Add environment variable documentation
+- [ ] Add code comments and inline documentation
+
+## Deployment
+This project is deployed on Netlify. See netlify.toml for configuration.
+
+## Author
+**Neal Frazier** - [@AshAmplifies](https://github.com/1nc0gn30)
+
+## Links
+- GitHub: https://github.com/1nc0gn30/HTML-To-PDF-Invoice-Generator
+
+---
+*This README was enhanced as part of the neals-projects-2026 batch update.*
