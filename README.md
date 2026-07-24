@@ -1,27 +1,39 @@
-# HTML-To-PDF-Invoice-Generator
+<!-- xonettn -->
+<div align="center">
+
+# 📄 Html To Pdf Invoice Generator
 
 A project by Neal Frazier
 
-## Overview
+
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?logo=netlify&logoColor=white)
+
+![Deploy](https://img.shields.io/badge/Deployed-Netlify-00C7B7?logo=netlify&logoColor=white)
+
+</div>
+
+---
+
+## 📋 Overview
 This repository is part of Neal Frazier project collection.
 
-## Tech Stack
+## 📦 Tech Stack
 - Netlify (deployed)
 
-## Project Structure
+## 🗂️ Project Structure
 ```
 HTML-To-PDF-Invoice-Generator/
   - 
   (5 files total)
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
-### Usage
+### 📖 Usage
 Open index.html in your browser or serve locally.
 Use: npx serve .
 
-## Original README
+## 📂 Original README
 <details>
 <summary>Click to expand original README</summary>
 
@@ -123,7 +135,7 @@ MIT — free for personal and commercial use.
 
 </details>
 
-## TODO / Roadmap
+## 📝 TODO / Roadmap
 - [ ] Add unit tests
 - [ ] Add LICENSE file
 - [ ] Add CI/CD pipeline
@@ -132,14 +144,22 @@ MIT — free for personal and commercial use.
 - [ ] Add environment variable documentation
 - [ ] Add code comments and inline documentation
 
-## Deployment
+## 🚀 Deployment
 This project is deployed on Netlify. See netlify.toml for configuration.
 
-## Author
+## 👤 Author
 **Neal Frazier** - [@AshAmplifies](https://github.com/1nc0gn30)
 
-## Links
+## 🔗 Links
 - GitHub: https://github.com/1nc0gn30/HTML-To-PDF-Invoice-Generator
 
 ---
 *This README was enhanced as part of the neals-projects-2026 batch update.*
+
+---
+
+<div align="center">
+
+**[xonettn]** · Built by [Neal Frazier](https://github.com/1nc0gn30) · [@AshAmplifies](https://twitter.com/AshAmplifies)
+
+</div>
